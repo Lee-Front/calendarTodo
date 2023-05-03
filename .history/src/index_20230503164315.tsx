@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 const { worker } = require("./mocks/browser");
 
+console.log("proc : ", process.env.PUBLIC_URL);
 worker.start({
   serviceWorker: {
     url: "./mockServiceWorker.js",
@@ -15,7 +16,7 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <BrowserRouter basename="/calendarTodo">
+  <BrowserRouter basename={process.env.PUBLIC_URL}>
     <App />
   </BrowserRouter>
 );
