@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="" ko>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="veiwport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  if (process.env.NODE_ENV === "development") { const { worker } =
+  require("./mocks/browser"); worker.start(); } else { if ("serviceWorker" in
+  navigator) { window.addEventListener("load", () => { navigator.serviceWorker
+  .register("/mockServiceWorker.js") // 수정 .catch((err) =>
+  console.error("Service Worker registration failed: ", err)); }); } }
+</html>

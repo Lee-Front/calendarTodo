@@ -5,11 +5,7 @@ import App from "./App";
 
 const { worker } = require("./mocks/browser");
 
-worker.start({
-  serviceWorker: {
-    url: "./mockServiceWorker.js",
-  },
-});
+worker.start();
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
