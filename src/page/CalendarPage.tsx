@@ -139,7 +139,7 @@ const CalendarPage: React.FC = () => {
           ◀
         </CalendarMonthButton>
         <div>
-          <span>{currentDate.getFullYear()}</span>
+          <span>{currentDate.getFullYear()}년 </span>
           <span>{currentDate.getMonth() + 1}월</span>
         </div>
         <CalendarMonthButton
@@ -249,7 +249,6 @@ const CalendarMonthButton = styled.button`
 
 const CalendarDayWrapper = styled.div`
   flex: 1;
-  background: #e9e9e9;
 `;
 
 const CalendarWeek = styled.div`
