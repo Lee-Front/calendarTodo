@@ -37,8 +37,8 @@ function App() {
             >
               <CSSTransition key={location.pathname} timeout={300}>
                 <Routes location={location}>
-                  <Route path="/" element={<CalendarPage />} />
-                  <Route path="todo" element={<TodoPage />} />
+                  <Route path="/calendarTodo" element={<CalendarPage />} />
+                  <Route path="/calendarTodo/todo" element={<TodoPage />} />
                 </Routes>
               </CSSTransition>
             </TransitionGroup>

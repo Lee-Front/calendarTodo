@@ -13,7 +13,7 @@ const Header = () => {
     <HeaderContainer>
       <SideWrapper>
         <LogoWrapper>
-          <Logo to={homeUrl} />
+          <Logo to="/" />
         </LogoWrapper>
       </SideWrapper>
       <SideWrapper>

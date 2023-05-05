@@ -6,8 +6,11 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 
 const Header = () => {
   const nav = useNavigate();
+  //const homeUrl = window.location.origin;
   const { path } = useParams();
   const homeUrl = path ? `/${path.split("/")[1]}` : "/";
+  console.log("homeUrl : ", homeUrl);
+  console.log("${path.split("/")[1]} : ",${path.split("/")[1]})
 
   return (
     <HeaderContainer>

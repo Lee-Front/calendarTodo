@@ -2,13 +2,12 @@ import React from "react";
 import styled from "@emotion/styled";
 import Profile from "./Profile";
 import LogoImg from "../images/myItLogo.svg";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, Path } from "react-router-dom";
 
 const Header = () => {
   const nav = useNavigate();
-  const { path } = useParams();
-  const homeUrl = path ? `/${path.split("/")[1]}` : "/";
-
+  //const homeUrl = window.location.origin;
+  const homeUrl = Path.join(window.location.origin, "/");
   return (
     <HeaderContainer>
       <SideWrapper>
