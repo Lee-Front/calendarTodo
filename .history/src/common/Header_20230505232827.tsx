@@ -5,8 +5,6 @@ import LogoImg from "../images/myItLogo.svg";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 const Header = () => {
-  const nav = useNavigate();
-
   return (
     <HeaderContainer>
       <SideWrapper>

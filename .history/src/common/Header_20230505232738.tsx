@@ -6,12 +6,14 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 
 const Header = () => {
   const nav = useNavigate();
+  const { path } = useParams();
+  const homeUrl = path ? `/${path.split("/")[1]}` : "/";
 
   return (
     <HeaderContainer>
       <SideWrapper>
         <LogoWrapper>
-          <Logo to="/" />
+          <Logo to="/2" />
         </LogoWrapper>
       </SideWrapper>
       <SideWrapper>
