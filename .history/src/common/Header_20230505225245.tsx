@@ -2,16 +2,18 @@ import React from "react";
 import styled from "@emotion/styled";
 import Profile from "./Profile";
 import LogoImg from "../images/myItLogo.svg";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const nav = useNavigate();
-  const homeUrl = window.location.origin;
+  const location = useLocation();
+  console.log("location : ", location);
+  const url = window.location.origin;
   return (
     <HeaderContainer>
       <SideWrapper>
         <LogoWrapper>
-          <Logo to={homeUrl} />
+          <Logo to={url} />
         </LogoWrapper>
       </SideWrapper>
       <SideWrapper>

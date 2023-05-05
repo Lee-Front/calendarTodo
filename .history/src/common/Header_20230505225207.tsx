@@ -6,12 +6,13 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const nav = useNavigate();
-  const homeUrl = window.location.origin;
+  console.log("window.location.pathname : ", window.location);
+  const url = window.location.origin;
   return (
     <HeaderContainer>
       <SideWrapper>
         <LogoWrapper>
-          <Logo to={homeUrl} />
+          <Logo to={url} />
         </LogoWrapper>
       </SideWrapper>
       <SideWrapper>
