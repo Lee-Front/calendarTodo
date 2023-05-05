@@ -1,0 +1,34 @@
+import React from "react";
+import styled from "@emotion/styled";
+import LogoImg from "../images/myItLogo.svg";
+
+const LoginHeader = () => {
+  return (
+    <HeaderContainer>
+      <LogoWrapper>
+        <Logo href="/" />
+      </LogoWrapper>
+    </HeaderContainer>
+  );
+};
+
+export default LoginHeader;
+
+const HeaderContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const LogoWrapper = styled.div`
+  padding: 1rem;
+  height: 9.9rem;
+  width: 18rem;
+`;
+
+const Logo = styled.a`
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  background-image: url(${LogoImg});
+`;
