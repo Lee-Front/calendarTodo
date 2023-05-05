@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import Profile from "./Profile";
-import LogoImg from "./../images/myItLogo.svg";
+import LogoImg from "/images/myItLogo.svg";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {
