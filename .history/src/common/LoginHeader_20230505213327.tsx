@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 //import LogoImg from "../../public/images/myItLogo.svg";
-//import LogoImg from "../images/myItLogo.svg";
+import LogoImg from "../images/myItLogo.svg";
 
 const LoginHeader = () => {
   return (
@@ -32,5 +32,5 @@ const Logo = styled.a`
   display: block;
   width: 100%;
   height: 100%;
-  background-image: url("../images/myItLogo.svg");
+  background-image: url(${LogoImg});
 `;
