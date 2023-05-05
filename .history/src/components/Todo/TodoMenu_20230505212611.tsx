@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import Plus from "../../../public/images/plus.svg";
 import Share from "../../../public/images/share.svg";
-import Calendar from "../../../public/images/calendar.svg";
+import Calendar from "../../public/images/calendar.svg";
 import { useNavigate } from "react-router-dom";
 
 interface TodoMenuProps {

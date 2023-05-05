@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "@emotion/styled";
 import Profile from "./Profile";
-import LogoImg from "../../public/images/myItLogo.svg";
+import LogoImg from "../images/myItLogo.svg";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {
-  console.log("process : ", process.env.NODE_ENV);
+  console.log("process.env.PUBLIC_URL : ", process.env.PUBLIC_URL);
   const nav = useNavigate();
   return (
     <HeaderContainer>

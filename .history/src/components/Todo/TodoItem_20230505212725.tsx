@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import styled from "@emotion/styled";
+import { keyframes } from "@emotion/react";
 import Pen from "../../../public/images/pen.svg";
 import Trash from "../../../public/images/trash.svg";
 import Xmark from "../../../public/images/xmark.svg";

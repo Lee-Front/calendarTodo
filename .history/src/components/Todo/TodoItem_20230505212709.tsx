@@ -1,9 +1,11 @@
 import React, { useRef, useState } from "react";
 import styled from "@emotion/styled";
+import { keyframes } from "@emotion/react";
 import Pen from "../../../public/images/pen.svg";
-import Trash from "../../../public/images/trash.svg";
-import Xmark from "../../../public/images/xmark.svg";
-import Check from "../../../public/images/check.svg";
+import Trash from "../../..public/images/trash.svg";
+
+import Xmark from "../../images/xmark.svg";
+import Check from "../../images/check.svg";
 
 interface Todo {
   id: number;
