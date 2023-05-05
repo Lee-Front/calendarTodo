@@ -10,13 +10,14 @@ worker.start({
   },
 });
 
-const basename = process.env.NODE_ENV === "production" ? "/calendarTodo" : "";
+console.log("process.env.NODE_ENV : ", process.env.NODE_ENV);
+
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
 root.render(
-  <BrowserRouter basename={basename}>
+  <BrowserRouter basename="/calendarTodo">
     <App />
   </BrowserRouter>
 );

@@ -16,7 +16,7 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <BrowserRouter basename={basename}>
+  <BrowserRouter basename="/calendarTodo">
     <App />
   </BrowserRouter>
 );
