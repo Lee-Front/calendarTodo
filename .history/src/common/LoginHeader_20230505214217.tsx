@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 //import LogoImg from "../../public/images/myItLogo.svg";
 //import LogoImg from "../images/myItLogo.svg";
-import LogoImg from "../images/myItLogo.svg";
+import LogoImg from "/images/myItLogo.svg";
 
 const LoginHeader = () => {
   return (
