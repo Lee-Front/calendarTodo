@@ -1,6 +1,10 @@
 import React from "react";
 import styled from "@emotion/styled";
-import LogoImg from "../../public/images/myItLogo.svg";
+//import LogoImg from "../../public/images/myItLogo.svg";
+const pathname = window.location.pathname;
+import LogoImg from `${pathname}/images/myItLogo.svg`;
+//import LogoImg from "../images/myItLogo.svg";
+//import LogoImg from "../images/myItLogo.svg";
 
 const LoginHeader = () => {
   console.log("window.location.pathname : ", window.location.pathname);
