@@ -1,0 +1,61 @@
+import React from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { AxiosInstance, AxiosResponse, AxiosError } from "axios";
+
+type HttpMethod = "get" | "post" | "put" | "delete";
+
+interface AxiosResponseWithToken {
+  data: {
+    token: string;
+  };
+}
+
+interface UseAxiosOptions {
+  method: HttpMethod;
+  url: string;
+  body?: any;
+  headers?: any;
+}
+interface SystemError {
+  code: string;
+  message: string;
+}
+const useAxios = () => {
+  const [data, setData] = useState(null);
+  const [error, setError] = useState<SystemError | null>(null);
+  const axiosInstance: AxiosInstance = axios.create({
+    baseURL: "http://localhost:3000",
+  });
+
+  axiosInstance.interceptors.request.use(
+    (config) => {
+      console.log("11");
+      const token = document.cookie;
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+      return config;
+    },
+    (error) => {
+      return Promise.reject(error);
+    }
+  );
+
+  //   useEffect(() => {
+  //     const fetchData = async () => {
+  //       try {
+  //         const response: AxiosResponse = await axiosInstance[method](url);
+  //         setData(response.data);
+  //       } catch (e: unknown) {
+  //         const error = e as SystemError;
+  //         setError(error);
+  //       }
+  //     };
+  //     fetchData();
+  //   }, [url]);
+
+  return axiosInstance;
+};
+
+export default useAxios;

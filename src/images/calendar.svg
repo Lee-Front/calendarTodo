@@ -1,1 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M152 24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H64C28.7 64 0 92.7 0 128v16 48V448c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V192 144 128c0-35.3-28.7-64-64-64H344V24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H152V24zM48 192H400V448c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V192z"/></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 27.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 26.05 27.18" style="enable-background:new 0 0 26.05 27.18;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#4C4C4C;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st1{fill:#4C4C4C;}
+</style>
+<g>
+	<path class="st0" d="M21.52,26.18H4.54c-1.52,0-2.75-1.23-2.75-2.75V8.52c0-1.52,1.23-2.75,2.75-2.75h16.98
+		c1.52,0,2.75,1.23,2.75,2.75v14.91C24.27,24.95,23.04,26.18,21.52,26.18z"/>
+	<path class="st1" d="M24.03,12.86H2.02C0.91,12.86,0,11.95,0,10.84V5.89c0-1.12,0.91-2.02,2.02-2.02h22.01
+		c1.12,0,2.02,0.91,2.02,2.02v4.95C26.05,11.95,25.15,12.86,24.03,12.86z"/>
+	<line class="st0" x1="5.81" y1="1" x2="5.81" y2="5.41"/>
+	<line class="st0" x1="20.08" y1="1" x2="20.08" y2="5.41"/>
+</g>
+</svg>
