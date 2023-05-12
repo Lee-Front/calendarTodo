@@ -1,6 +1,5 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const path = require("path");
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -31,7 +30,7 @@ module.exports = {
             loader: "file-loader",
             options: {
               name: "[name].[ext]",
-              outputPath: path.resolve(__dirname, "public/fonts"),
+              outputPath: path.resolve(__dirname, "dist/fonts"),
             },
           },
         ],
