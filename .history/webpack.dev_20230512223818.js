@@ -9,21 +9,6 @@ module.exports = merge(common, {
     path: path.join(__dirname, "/dist"),
     filename: "bundle.js",
   },
-  module: {
-    rules: [
-      {
-        test: /\.(ttf|otf|eot|svg|woff|woff2)$/,
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: "[name].[ext]",
-            },
-          },
-        ],
-      },
-    ],
-  },
   devServer: {
     historyApiFallback: true,
     port: 3000,
