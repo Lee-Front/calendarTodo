@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 export const globalStyles = css`
   @font-face {
     font-family: "SpoqaHanSansNeo-Medium";
-    src: url("fonts/SpoqaHanSansNeo-Medium.ttf") format("truetype");
+    src: url("fonts/SpoqaHanSansNeo.ttf");
   }
   * {
     margin: 0;
@@ -12,7 +12,7 @@ export const globalStyles = css`
     font-size: 100%;
     vertical-align: baseline;
     box-sizing: border-box;
-    font-family: "SpoqaHanSansNeo-Medium";
+    font-family: "SpoqaHanSansNeo";
   }
   /* HTML5 display-role reset for older browsers */
   article,
