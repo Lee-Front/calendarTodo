@@ -2,8 +2,8 @@ import { css } from "@emotion/react";
 
 export const globalStyles = css`
   @font-face {
-    font-family: "SpoqaHanSansNeo";
-    src: url("fonts/SpoqaHanSansNeo.ttf");
+    font-family: "SpoqaHanSansNeo-Medium";
+    src: url("/fonts/SpoqaHanSansNeo.ttf");
   }
   * {
     margin: 0;

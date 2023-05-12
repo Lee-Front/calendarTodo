@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 export const globalStyles = css`
   @font-face {
     font-family: "SpoqaHanSansNeo";
-    src: url("fonts/SpoqaHanSansNeo.ttf");
+    src: url("/fonts/SpoqaHanSansNeo.ttf");
   }
   * {
     margin: 0;
