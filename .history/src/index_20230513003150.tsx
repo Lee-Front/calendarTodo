@@ -2,11 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
+import "../public/mockServiceWorker";
 const { worker } = require("./mocks/browser");
 
 worker.start({
   serviceWorker: {
-    url: "./mockServiceWorker.tsx",
+    url: "./mockServiceWorker.js",
   },
 });
 

@@ -16,7 +16,6 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 import useAuthStore from "./stores/useAuthStore";
 import "./fonts/SpoqaHanSansNeo.ttf";
-import "../public/mockServiceWorker";
 
 function App() {
   const location = useLocation();

@@ -21,7 +21,7 @@ module.exports = merge(common, {
         ],
       },
       {
-        test: /\.(svg)$/,
+        test: /\.(ttf|otf|eot|svg|woff|woff2)$/,
         use: [
           {
             loader: "file-loader",

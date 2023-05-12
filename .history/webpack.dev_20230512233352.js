@@ -14,7 +14,7 @@ module.exports = merge(common, {
             loader: "file-loader",
             options: {
               name: "[name].[ext]",
-              include: ["src/images", "src/fonts"],
+              include: [path.join(__dirname, "src/fonts")],
             },
           },
         ],

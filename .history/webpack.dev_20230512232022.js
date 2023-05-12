@@ -5,22 +5,6 @@ const path = require("path");
 module.exports = merge(common, {
   mode: "development",
   devtool: "eval",
-  module: {
-    rules: [
-      {
-        test: /\.(ttf|otf|eot|svg|woff|woff2)$/,
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: "[name].[ext]",
-              include: ["src/images", "src/fonts"],
-            },
-          },
-        ],
-      },
-    ],
-  },
   output: {
     path: path.join(__dirname, "/dist"),
     filename: "bundle.js",

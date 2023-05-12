@@ -6,7 +6,7 @@ const { worker } = require("./mocks/browser");
 
 worker.start({
   serviceWorker: {
-    url: "./mockServiceWorker.tsx",
+    url: "./mockServiceWorker.js",
   },
 });
 

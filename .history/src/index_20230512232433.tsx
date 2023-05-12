@@ -6,10 +6,11 @@ const { worker } = require("./mocks/browser");
 
 worker.start({
   serviceWorker: {
-    url: "./mockServiceWorker.tsx",
+    url: "./mockServiceWorker.js",
   },
 });
 
+console.log("process.env.NODE_ENV: ", process.env.NODE_ENV);
 const basename = process.env.NODE_ENV === "production" ? "/calendarTodo" : "";
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 

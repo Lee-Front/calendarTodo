@@ -8,7 +8,7 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
-        test: /\.(ttf|otf|eot|woff|woff2)$/,
+        test: /\.(ttf|otf|eot|svg|woff|woff2)$/,
         use: [
           {
             loader: "file-loader",
@@ -16,19 +16,6 @@ module.exports = merge(common, {
               name: "fonts/[name].[ext]",
               publicPath: "/calendarTodo/",
               include: [path.join(__dirname, "src/fonts")],
-            },
-          },
-        ],
-      },
-      {
-        test: /\.(svg)$/,
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: "images/[name].[ext]",
-              publicPath: "/calendarTodo/",
-              include: [path.join(__dirname, "src/images")],
             },
           },
         ],
