@@ -1,21 +1,30 @@
 import React from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
-import CalendarPage from "./page/CalendarPage";
-import TodoPage from "./page/TodoPage";
-
+import { Route, Routes, useLocation, Navigate } from "react-router-dom";
 import { Global } from "@emotion/react";
 import { globalStyles } from "./style";
 import styled from "@emotion/styled";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import "./interceptors/axiosInterceptor";
+
+import CalendarPage from "./page/CalendarPage";
+import TodoPage from "./page/TodoPage";
 import LoginPage from "./page/LoginPage";
 import Header from "./components/common/Header";
 import LoginHeader from "./components/common/LoginHeader";
 import SignUpPage from "./page/SignUpPage";
-import "./interceptors/axiosInterceptor";
+
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+
+import useAuthStore from "./stores/useAuthStore";
 
 function App() {
   const location = useLocation();
   const isLoginPage = location.pathname === "/login" || location.pathname === "/signup";
+
+  const { isAuthenticated } = useAuthStore();
+
+  if (!isLoginPage && !isAuthenticated) {
+    return <Navigate to="/login" />;
+  }
 
   return (
     <Wrapper>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "@emotion/styled";
 import Profile from "./Profile";
 import LogoImg from "../../images/myItLogo.svg";
