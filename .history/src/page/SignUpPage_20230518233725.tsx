@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { SiguUpProps } from "../types/authTypes";
-import { Error } from "../types/commonTypes";
 
 const SignUpPage = () => {
   const nav = useNavigate();
@@ -32,15 +31,14 @@ const SignUpPage = () => {
         return;
       }
       const response = await axios.post("/signup", formData);
-
+      console.log("response: ", response);
       if (response.status === 200) {
         nav("/login");
-      }
-    } catch (e) {
-      const error = e as AxiosError;
-      if (error.response?.status === 409) {
+      } else if (response.status === 409) {
         setMessage("이미 존재하는 아이디입니다.");
       }
+    } catch (e) {
+      console.log("err");
     }
   };
 

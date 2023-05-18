@@ -340,40 +340,40 @@ const signup = (userId: string, password: string): Promise<Todo[]> => {
       const store = tx.objectStore(userStoreName);
       if (userId !== null && password !== null) {
         const userIdIndex = store.index("userId");
-
         userIdIndex.get(userId).onsuccess = async (event) => {
           const cursor = await (event.target as IDBRequest).result;
           if (cursor) {
             reject(new Error("User already exists"));
-          } else {
-            const salt = CryptoJS.lib.WordArray.random(128 / 8).toString();
-            const hashedPassword = CryptoJS.PBKDF2(password, salt, { keySize: 512 / 32, iterations: 10000 }).toString();
-
-            const newUser = {
-              userId,
-              password: hashedPassword,
-              salt,
-            };
-
-            const addRequest = store.add(newUser);
-            addRequest.onsuccess = () => {
-              const getRequest = store.get(addRequest.result);
-              getRequest.onsuccess = () => {
-                resolve(getRequest.result);
-              };
-              getRequest.onerror = () => {
-                reject();
-              };
-            };
-            addRequest.onerror = () => {
-              reject();
-            };
           }
+        };
+
+        const salt = CryptoJS.lib.WordArray.random(128 / 8).toString();
+        const hashedPassword = CryptoJS.PBKDF2(password, salt, { keySize: 512 / 32, iterations: 10000 }).toString();
+
+        const newUser = {
+          userId,
+          password: hashedPassword,
+          salt,
+        };
+
+        const addRequest = store.add(newUser);
+        addRequest.onsuccess = () => {
+          const getRequest = store.get(addRequest.result);
+          getRequest.onsuccess = () => {
+            resolve(getRequest.result);
+          };
+          getRequest.onerror = () => {
+            reject();
+          };
+        };
+        addRequest.onerror = () => {
+          reject();
         };
       } else {
         reject();
       }
     } catch (err) {
+      console.error(err);
       reject();
     }
   });
@@ -477,13 +477,9 @@ export const handlers = [
   }),
 
   rest.post("/signup", async (req, res, ctx) => {
-    try {
-      const { userId, password } = await req.json();
-      await signup(userId, password);
-      return res(ctx.status(200));
-    } catch (e) {
-      return res(ctx.status(409), ctx.json({ message: "already exists" }));
-    }
+    const { userId, password } = await req.json();
+    await signup(userId, password);
+    return res(ctx.status(200));
   }),
 
   // 포스트 목록

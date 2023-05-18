@@ -344,8 +344,11 @@ const signup = (userId: string, password: string): Promise<Todo[]> => {
         userIdIndex.get(userId).onsuccess = async (event) => {
           const cursor = await (event.target as IDBRequest).result;
           if (cursor) {
+            console.log("1");
             reject(new Error("User already exists"));
+            return;
           } else {
+            console.log("2");
             const salt = CryptoJS.lib.WordArray.random(128 / 8).toString();
             const hashedPassword = CryptoJS.PBKDF2(password, salt, { keySize: 512 / 32, iterations: 10000 }).toString();
 
@@ -374,6 +377,7 @@ const signup = (userId: string, password: string): Promise<Todo[]> => {
         reject();
       }
     } catch (err) {
+      console.error(err);
       reject();
     }
   });
@@ -477,13 +481,9 @@ export const handlers = [
   }),
 
   rest.post("/signup", async (req, res, ctx) => {
-    try {
-      const { userId, password } = await req.json();
-      await signup(userId, password);
-      return res(ctx.status(200));
-    } catch (e) {
-      return res(ctx.status(409), ctx.json({ message: "already exists" }));
-    }
+    const { userId, password } = await req.json();
+    await signup(userId, password);
+    return res(ctx.status(200));
   }),
 
   // 포스트 목록

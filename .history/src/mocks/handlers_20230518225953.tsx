@@ -335,45 +335,50 @@ const searchCalendar = (startDate: string, endDate: string, userId: string): Pro
 const signup = (userId: string, password: string): Promise<Todo[]> => {
   return new Promise(async (resolve, reject) => {
     try {
+      console.log("0");
       const db = await openDatabase();
       const tx = db.transaction(userStoreName, "readwrite");
       const store = tx.objectStore(userStoreName);
       if (userId !== null && password !== null) {
         const userIdIndex = store.index("userId");
-
+        console.log("dd");
         userIdIndex.get(userId).onsuccess = async (event) => {
+          console.log("2");
           const cursor = await (event.target as IDBRequest).result;
           if (cursor) {
+            console.log("dd");
             reject(new Error("User already exists"));
-          } else {
-            const salt = CryptoJS.lib.WordArray.random(128 / 8).toString();
-            const hashedPassword = CryptoJS.PBKDF2(password, salt, { keySize: 512 / 32, iterations: 10000 }).toString();
-
-            const newUser = {
-              userId,
-              password: hashedPassword,
-              salt,
-            };
-
-            const addRequest = store.add(newUser);
-            addRequest.onsuccess = () => {
-              const getRequest = store.get(addRequest.result);
-              getRequest.onsuccess = () => {
-                resolve(getRequest.result);
-              };
-              getRequest.onerror = () => {
-                reject();
-              };
-            };
-            addRequest.onerror = () => {
-              reject();
-            };
           }
+        };
+
+        console.log("3");
+        const salt = CryptoJS.lib.WordArray.random(128 / 8).toString();
+        const hashedPassword = CryptoJS.PBKDF2(password, salt, { keySize: 512 / 32, iterations: 10000 }).toString();
+
+        const newUser = {
+          userId,
+          password: hashedPassword,
+          salt,
+        };
+
+        const addRequest = store.add(newUser);
+        addRequest.onsuccess = () => {
+          const getRequest = store.get(addRequest.result);
+          getRequest.onsuccess = () => {
+            resolve(getRequest.result);
+          };
+          getRequest.onerror = () => {
+            reject();
+          };
+        };
+        addRequest.onerror = () => {
+          reject();
         };
       } else {
         reject();
       }
     } catch (err) {
+      console.error(err);
       reject();
     }
   });
@@ -477,13 +482,9 @@ export const handlers = [
   }),
 
   rest.post("/signup", async (req, res, ctx) => {
-    try {
-      const { userId, password } = await req.json();
-      await signup(userId, password);
-      return res(ctx.status(200));
-    } catch (e) {
-      return res(ctx.status(409), ctx.json({ message: "already exists" }));
-    }
+    const { userId, password } = await req.json();
+    await signup(userId, password);
+    return res(ctx.status(200));
   }),
 
   // 포스트 목록

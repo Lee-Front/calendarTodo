@@ -479,10 +479,11 @@ export const handlers = [
   rest.post("/signup", async (req, res, ctx) => {
     try {
       const { userId, password } = await req.json();
-      await signup(userId, password);
+      const response = await signup(userId, password);
+
       return res(ctx.status(200));
     } catch (e) {
-      return res(ctx.status(409), ctx.json({ message: "already exists" }));
+      return res(ctx.status(401), ctx.json({ message: "already exists" }));
     }
   }),
 

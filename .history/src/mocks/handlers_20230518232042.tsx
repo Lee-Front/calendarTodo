@@ -374,6 +374,7 @@ const signup = (userId: string, password: string): Promise<Todo[]> => {
         reject();
       }
     } catch (err) {
+      console.error(err);
       reject();
     }
   });
@@ -397,6 +398,7 @@ const login = (
           const userData = getRequest.result;
           if (!userData) {
             reject(new Error("User not found"));
+            return;
           } else {
             const passwordHash = CryptoJS.PBKDF2(password, userData.salt, {
               keySize: 512 / 32,
@@ -477,13 +479,9 @@ export const handlers = [
   }),
 
   rest.post("/signup", async (req, res, ctx) => {
-    try {
-      const { userId, password } = await req.json();
-      await signup(userId, password);
-      return res(ctx.status(200));
-    } catch (e) {
-      return res(ctx.status(409), ctx.json({ message: "already exists" }));
-    }
+    const { userId, password } = await req.json();
+    await signup(userId, password);
+    return res(ctx.status(200));
   }),
 
   // 포스트 목록

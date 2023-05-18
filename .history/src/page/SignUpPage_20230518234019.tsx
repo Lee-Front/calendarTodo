@@ -37,7 +37,9 @@ const SignUpPage = () => {
         nav("/login");
       }
     } catch (e) {
+      console.log("err");
       const error = e as AxiosError;
+      console.log("error: ", error);
       if (error.response?.status === 409) {
         setMessage("이미 존재하는 아이디입니다.");
       }
