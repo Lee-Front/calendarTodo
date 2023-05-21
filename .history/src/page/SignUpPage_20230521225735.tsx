@@ -72,7 +72,7 @@ const SignUpPage = () => {
         <Button
           onClick={(e) => {
             e.preventDefault();
-            nav("/login");
+            nav(-1);
           }}
         >
           취소

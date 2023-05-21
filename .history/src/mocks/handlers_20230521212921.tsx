@@ -491,10 +491,6 @@ export const handlers = [
   // 포스트 목록
 
   rest.get<Todo[]>("/post", async (req, res, ctx) => {
-    const isValidToken = await validateToken();
-    if (!isValidToken) {
-      return res(ctx.status(401), ctx.json({ message: "Invalid token" }));
-    }
     const searchDate = req.url.searchParams.get("searchDate");
     const userId = req.url.searchParams.get("userId");
     if (searchDate && userId) {
@@ -506,29 +502,17 @@ export const handlers = [
 
   // 투두 추가
   rest.post("/post", async (req, res, ctx) => {
-    const isValidToken = await validateToken();
-    if (!isValidToken) {
-      return res(ctx.status(401), ctx.json({ message: "Invalid token" }));
-    }
     const params = await req.json();
     const response = await addTodo(params.date, params.userId);
     return res(ctx.status(201), ctx.json(response));
   }),
 
   rest.put<Todo>("/post", async (req, res, ctx) => {
-    const isValidToken = await validateToken();
-    if (!isValidToken) {
-      return res(ctx.status(401), ctx.json({ message: "Invalid token" }));
-    }
     const data = await updateTodo(req.body as Todo);
     return res(ctx.status(200), ctx.json(data));
   }),
 
   rest.delete("/post", async (req, res, ctx) => {
-    const isValidToken = await validateToken();
-    if (!isValidToken) {
-      return res(ctx.status(401), ctx.json({ message: "Invalid token" }));
-    }
     const data = await req.json();
     deleteTodo(data.id);
     return res(ctx.status(200));
@@ -536,6 +520,7 @@ export const handlers = [
 
   // 달력관련
   rest.get("/calendar", async (req, res, ctx) => {
+    const token = Cookies.get("accessToken")?.split("=")[1]?.split(";")[0];
     const isValidToken = await validateToken();
 
     if (!isValidToken) {
@@ -555,10 +540,6 @@ export const handlers = [
   }),
 
   rest.post("postItStyle", async (req, res, ctx) => {
-    const isValidToken = await validateToken();
-    if (!isValidToken) {
-      return res(ctx.status(401), ctx.json({ message: "Invalid token" }));
-    }
     const params = await req.json();
     const response = await addPostItStyle(params.date, params.userId, params.color);
     return res(ctx.status(201), ctx.json(response));

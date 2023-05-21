@@ -4,10 +4,19 @@ import Cookies from "js-cookie";
 axios.interceptors.request.use(
   async (config) => {
     const token = document.cookie;
-    if (token) {
+    if (token && config.url !== "/validateToken" && config.url !== "/refreshToken") {
       try {
-        config.headers.Authorization = `Bearer ${token}`;
-      } catch (e) {}
+        const isValidToken = await axios.get("/validateToken");
+
+        if (isValidToken) {
+          config.headers.Authorization = `Bearer ${token}`;
+          return config;
+        } else {
+          //new Error(isValidToken);
+        }
+      } catch (e) {
+        window.location.href = "/login";
+      }
     }
     return config;
   },
@@ -29,9 +38,9 @@ axios.interceptors.response.use(
         await axios.post("/refreshToken", { refreshToken });
         return axios(originalRequest);
       }
+      window.location.href = "/login";
     }
 
-    window.location.href = "/login";
     return Promise.reject(error);
   }
 );

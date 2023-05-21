@@ -29,9 +29,8 @@ axios.interceptors.response.use(
         await axios.post("/refreshToken", { refreshToken });
         return axios(originalRequest);
       }
+      window.location.href = "/login";
     }
-
-    window.location.href = "/login";
     return Promise.reject(error);
   }
 );

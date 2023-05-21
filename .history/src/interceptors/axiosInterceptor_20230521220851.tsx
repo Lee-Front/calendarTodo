@@ -29,9 +29,9 @@ axios.interceptors.response.use(
         await axios.post("/refreshToken", { refreshToken });
         return axios(originalRequest);
       }
+    } else if (error.response.status === 301) {
+      window.location.href = "/login";
     }
-
-    window.location.href = "/login";
     return Promise.reject(error);
   }
 );

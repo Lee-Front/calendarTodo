@@ -22,6 +22,7 @@ axios.interceptors.response.use(
   },
   async (error) => {
     const originalRequest = error.config;
+    console.log("err : ", error);
     if (error.response.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
       const refreshToken = Cookies.get("refreshToken");
@@ -30,7 +31,6 @@ axios.interceptors.response.use(
         return axios(originalRequest);
       }
     }
-
     window.location.href = "/login";
     return Promise.reject(error);
   }

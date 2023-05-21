@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import axios, { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
 import { SiguUpProps } from "../types/authTypes";
+import { Error } from "../types/commonTypes";
 
 const SignUpPage = () => {
   const nav = useNavigate();
@@ -72,7 +73,6 @@ const SignUpPage = () => {
         <Button
           onClick={(e) => {
             e.preventDefault();
-            nav("/login");
           }}
         >
           취소

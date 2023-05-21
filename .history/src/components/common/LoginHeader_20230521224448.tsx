@@ -28,8 +28,7 @@ const LogoWrapper = styled.div`
   width: 18rem;
 `;
 
-const Logo = styled.div`
-  display: block;
+const Logo = styled.img`
   width: 100%;
   height: 100%;
   background-image: url(${LogoImg});

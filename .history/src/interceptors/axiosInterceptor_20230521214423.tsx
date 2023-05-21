@@ -4,8 +4,10 @@ import Cookies from "js-cookie";
 axios.interceptors.request.use(
   async (config) => {
     const token = document.cookie;
-    if (token) {
+    if (token && config.url !== "/validateToken" && config.url !== "/refreshToken") {
       try {
+        const isValidToken = await axios.get("/validateToken");
+        console.log("is : ", isValidToken);
         config.headers.Authorization = `Bearer ${token}`;
       } catch (e) {}
     }
@@ -29,9 +31,9 @@ axios.interceptors.response.use(
         await axios.post("/refreshToken", { refreshToken });
         return axios(originalRequest);
       }
+    } else if (error.response.status === 301) {
+      window.location.href = "/login";
     }
-
-    window.location.href = "/login";
     return Promise.reject(error);
   }
 );
